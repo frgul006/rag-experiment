@@ -1,0 +1,10 @@
+0_request.curl
+local
+data.json
+cookies.txt
+websites
+.vscode
+.env
+out
+__pycache__
+.mypy_cache

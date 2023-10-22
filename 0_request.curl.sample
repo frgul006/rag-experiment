@@ -1,0 +1,17 @@
+curl 'https://intern.regent.se/' \
+  -H 'authority: intern.regent.se' \
+  -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7' \
+  -H 'accept-language: en-GB,en-US;q=0.9,en;q=0.8' \
+  -H 'cache-control: no-cache' \
+  -H 'cookie: _gid=GA1.2.1477377941.1697279311; wordpress_test_cookie=WP%20Cookie%20check; PHPSESSID=vm104v104fi1014f; wordpress_logged_in_bf1j4foij14fno14=john.doe%40regent.se%7C1697452136%7C3nXO2sNJ5mLebE6sp1R7WTADnmpvKdjlYpp4emwAa5w%7C0a4e22836adfadfdb2ca295646daae6e91e6ea3bf98eb6d47908667514077e1bfe; wfwaf-authcookie-fadfadfadfadfadf=46%7Cother%7Cread%7C4612f9f45532d0074221c46a245c06f4b63e929dbf2ad08adfadfafad90514ad4; pll_language=en; _ga_S1TV803MEJ=GS1.1.1697279310.1.1.1697279503.0.0.0; _ga=GA1.1.1534741335.1697279311' \
+  -H 'pragma: no-cache' \
+  -H 'sec-ch-ua: "GOOGLE_VERSION_STUFF"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "macOS"' \
+  -H 'sec-fetch-dest: document' \
+  -H 'sec-fetch-mode: navigate' \
+  -H 'sec-fetch-site: none' \
+  -H 'sec-fetch-user: ?1' \
+  -H 'upgrade-insecure-requests: 1' \
+  -H 'user-agent: SOME_USER_AGENT' \
+  --compressed

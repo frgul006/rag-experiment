@@ -1,0 +1,38 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[scripts]
+format = "isort . && black ."
+test = "python3 -m unittest discover"
+type_check = "mypy ."
+
+[packages]
+beautifulsoup4 = "*"
+importlib = "*"
+jsonlines = "*"
+langchain = "*"
+openai = "*"
+pinecone-client = "*"
+pypdf2 = "*"
+python-dotenv = "*"
+python-pptx = "*"
+reportlab = "*"
+requests = "*"
+tiktoken = "*"
+toml = "*"
+colorama = "*"
+
+[dev-packages]
+mypy = "*"
+types-colorama = "*"
+types-tqdm = "*"
+types-requests = "*"
+types-beautifulsoup4 = "*"
+black = "*"
+isort = "*"
+flake8 = "*"
+
+[requires]
+python_version = "3.9"
