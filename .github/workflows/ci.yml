@@ -37,8 +37,8 @@ jobs:
       - name: Install dependencies
         run: make install-dev
 
-      - name: Run check
+      - name: Lint
         run: make lint
 
-      - name: Run test
+      - name: Test
         run: make test

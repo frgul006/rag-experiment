@@ -6,6 +6,7 @@ from concurrent.futures import ThreadPoolExecutor
 from unittest.mock import MagicMock, patch
 
 import pytest
+
 from regent_rag import scraper
 
 URL_ROOT = "https://intern.regent.se/en/intranat-english"
