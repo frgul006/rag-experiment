@@ -1,7 +1,7 @@
 from io import BytesIO
 
-import PyPDF2
 from pptx import Presentation
+from pypdf import PdfReader
 
 
 def extract_text_from_pdf(file_content: bytes) -> str:
@@ -15,7 +15,7 @@ def extract_text_from_pdf(file_content: bytes) -> str:
     str: The extracted text from the PDF file.
     """
     # Load the PDF file
-    pdf_file = PyPDF2.PdfReader(BytesIO(file_content))
+    pdf_file = PdfReader(BytesIO(file_content))
 
     # Extract text from each page
     extracted_text = " ".join([page.extract_text() for page in pdf_file.pages])

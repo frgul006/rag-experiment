@@ -2,7 +2,7 @@ import os
 import tempfile
 import unittest
 
-from utils.cookies import get_cookies_and_user_agent_from_file
+from regent_rag.utils.cookies import get_cookies_and_user_agent_from_file
 
 
 class TestGetCookiesAndUserAgent(unittest.TestCase):

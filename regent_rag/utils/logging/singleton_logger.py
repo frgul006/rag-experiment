@@ -5,6 +5,7 @@ from typing import Any, Dict, Optional
 from colorama import Fore, Style
 from dotenv import load_dotenv
 
+# Define logging levels
 LEVELS: Dict[str, int] = {
     "DEBUG": logging.DEBUG,
     "INFO": logging.INFO,
@@ -15,7 +16,15 @@ LEVELS: Dict[str, int] = {
 
 
 class ColoredFormatter(logging.Formatter):
+    """
+    This class extends the logging.Formatter class to add color to the logs based on their level.
+    """
+
     def format(self, record: logging.LogRecord) -> str:
+        """
+        This method formats the log messages.
+        """
+        # Assign colors based on the log level
         if record.levelno == logging.CRITICAL:
             prefix = f"{Fore.RED}{Style.BRIGHT}"
         elif record.levelno == logging.ERROR:
@@ -32,19 +41,27 @@ class ColoredFormatter(logging.Formatter):
 
 
 class SingletonLogger:
+    """
+    This class implements the Singleton design pattern for a logger.
+    """
+
     _instance: Optional["SingletonLogger"] = None
 
     def __new__(cls, *args: Any, **kwargs: Any) -> "SingletonLogger":
+        """
+        This method ensures that only one instance of the logger is created.
+        """
         if cls._instance is None:
             cls._instance = super().__new__(cls)
         return cls._instance
 
     def __init__(self) -> None:
+        """
+        This method initializes the logger.
+        """
         load_dotenv()
         self._logger = logging.getLogger("SingletonLogger")
-        self._logger.setLevel(
-            LEVELS.get(os.environ.get("LOG_LEVEL", "INFO"), logging.INFO)
-        )
+        self._logger.setLevel(LEVELS.get(os.environ.get("LOG_LEVEL", "INFO"), logging.INFO))
         formatter = ColoredFormatter("%(asctime)s %(levelname)s %(message)s")
 
         # StreamHandler for console logging
@@ -63,16 +80,31 @@ class SingletonLogger:
         logging.captureWarnings(True)
 
     def critical(self, *args: Any, **kwargs: Any) -> None:
+        """
+        This method logs a message with CRITICAL level.
+        """
         self._logger.critical(*args, **kwargs)
 
     def error(self, *args: Any, **kwargs: Any) -> None:
+        """
+        This method logs a message with ERROR level.
+        """
         self._logger.error(*args, **kwargs)
 
     def warning(self, *args: Any, **kwargs: Any) -> None:
+        """
+        This method logs a message with WARNING level.
+        """
         self._logger.warning(*args, **kwargs)
 
     def info(self, *args: Any, **kwargs: Any) -> None:
+        """
+        This method logs a message with INFO level.
+        """
         self._logger.info(*args, **kwargs)
 
     def debug(self, *args: Any, **kwargs: Any) -> None:
+        """
+        This method logs a message with DEBUG level.
+        """
         self._logger.debug(*args, **kwargs)

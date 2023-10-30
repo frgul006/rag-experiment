@@ -12,7 +12,7 @@ def get_cookies_and_user_agent_from_file(filepath: str) -> Tuple[Dict[str, str],
     Returns:
     Tuple[Dict[str, str], str]: A tuple containing a dictionary of cookies and a string of user-agent.
     """
-    with open(filepath, "r") as file:
+    with open(filepath, "r", encoding="utf-8") as file:
         content = file.read()
 
     # Extract cookie line
@@ -23,8 +23,7 @@ def get_cookies_and_user_agent_from_file(filepath: str) -> Tuple[Dict[str, str],
 
     # Extract cookies
     cookies = {
-        match.group(1).strip(): match.group(2).strip()
-        for match in re.finditer(r"([^=]+)=([^;]+);?", cookie_line)
+        match.group(1).strip(): match.group(2).strip() for match in re.finditer(r"([^=]+)=([^;]+);?", cookie_line)
     }
 
     # Extract user agent

@@ -9,13 +9,14 @@ from urllib.parse import urlparse
 import requests
 from bs4 import BeautifulSoup
 
-from utils.cookies import get_cookies_and_user_agent_from_file
-from utils.extractors import extract_text_from_pdf, extract_text_from_pptx
-from utils.logging import logger
-from utils.path import ensure_dir
+from regent_rag.utils.cookies import get_cookies_and_user_agent_from_file
+from regent_rag.utils.extractors import extract_text_from_pdf, extract_text_from_pptx
+from regent_rag.utils.logging import logger
+from regent_rag.utils.path import ensure_dir
+from regent_rag.utils.settings import get_settings
 
-CURL_FILE = "0_request.curl"
-OUTPUT_FOLDER = "./out/scrape"
+CURL_FILE = get_settings().curl_file
+SCRAPE_FOLDER = f"{get_settings().output_folder}/scrape"
 
 
 def scrape_website(
@@ -31,7 +32,7 @@ def scrape_website(
     logger.info(f"Downloading {url}...")
 
     # Parse the URL to create a filename
-    filename = os.path.join(OUTPUT_FOLDER, f"{urllib.parse.quote_plus(url)}.json")
+    filename = os.path.join(SCRAPE_FOLDER, f"{urllib.parse.quote_plus(url)}.json")
 
     # Download the HTML content of the webpage
     response = session.get(url)
@@ -67,15 +68,13 @@ def scrape_website(
     for href in links:
         # Make sure the URL is not None
         if href is not None:
-            linkDomain = urlparse(href).netloc
+            link_domain = urlparse(href).netloc
             # Make sure the URL is not already visited and in the right domain
-            if href not in visited and linkDomain == domain:
+            if href not in visited and link_domain == domain:
                 # Handle relative URLs
                 href = urllib.parse.urljoin(url, href)
                 # Recursively scrape the linked webpage
-                executor.submit(
-                    scrape_website, session, href, visited, domain, executor
-                )
+                executor.submit(scrape_website, session, href, visited, domain, executor)
 
 
 def main() -> None:
@@ -87,7 +86,7 @@ def main() -> None:
     cookies, user_agent = get_cookies_and_user_agent_from_file(CURL_FILE)
 
     # Ensure output folders exist
-    ensure_dir(OUTPUT_FOLDER)
+    ensure_dir(SCRAPE_FOLDER)
 
     # Start scraping
     with requests.Session() as session:

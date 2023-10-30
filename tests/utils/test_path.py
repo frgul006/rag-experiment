@@ -2,7 +2,7 @@ import os
 import tempfile
 import unittest
 
-from utils.path import ensure_dir
+from regent_rag.utils.path import ensure_dir
 
 
 class TestEnsureDir(unittest.TestCase):
@@ -23,10 +23,9 @@ class TestEnsureDir(unittest.TestCase):
         # Test that ensure_dir does not raise an error if the directory already exists
         try:
             ensure_dir(new_dir_path)
+        # pylint: disable=broad-exception-caught
         except Exception as e:
-            self.fail(
-                f"ensure_dir raised an exception when called on an existing directory: {e}"
-            )
+            self.fail(f"ensure_dir raised an exception when called on an existing directory: {e}")
 
 
 if __name__ == "__main__":
