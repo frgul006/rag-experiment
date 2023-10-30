@@ -24,13 +24,11 @@ jobs:
           # An explicit key for restoring and saving the cache
           key: build_cache
 
-      - name: Set up Python 3.12
-        uses: actions/setup-python@v3
-        with:
-          python-version: "3.12"
-
       - name: Install dependencies
-        run: make install-dev
+        uses: palewire/install-python-pipenv-pipfile@v3
+        with:
+          # The version of Python to use
+          python-version: "3.12"
 
       - name: Run check
         run: make lint
