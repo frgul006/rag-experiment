@@ -20,7 +20,10 @@ jobs:
         uses: actions/cache@v3.3.2
         with:
           # A list of files, directories, and wildcard patterns to cache and restore
-          path: .venv,.pytest_cache,.mypy_cache
+          path: |
+            .venv
+            .pytest_cache
+            .mypy_cache
           # An explicit key for restoring and saving the cache
           key: build_cache
 
