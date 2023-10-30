@@ -1,6 +1,6 @@
 # Regent Rag
 
-Regent Rag is a collection of Python scripts designed to scrape authenticated websites, transform the textual content into a vector database, and execute queries against this database.
+Regent Rag is a collection of Python scripts designed to scrape websites behind cookie-based authentication, transform the textual content into a vector database, and execute queries against this database.
 
 This README provides instructions on how to install, setup and run the scripts locally.
 
