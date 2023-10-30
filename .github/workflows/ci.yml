@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Cache
+        uses: actions/cache@v3.3.2
+        with:
+          # A list of files, directories, and wildcard patterns to cache and restore
+          path: .venv,.pytest_cache,.mypy_cache
+          # An explicit key for restoring and saving the cache
+          key: build_cache
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: make install-dev
+
+      - name: Run check
+        run: make lint
+
+      - name: Run test
+        run: make test
