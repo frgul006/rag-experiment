@@ -14,13 +14,17 @@ class Settings(BaseSettings):
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", frozen=True)
 
-    openai_api_key: str = ""  # OPENAI_API_KEY
-    pinecone_api_key: str = ""  # PINECONE_API_KEY
-    pinecone_index_name: str = ""  # PINECONE_INDEX_NAME
-    pinecone_environment: str = ""  # PINECONE_ENVIRONMENT
+    curl_file: str = "./request.curl"  # CURL_FILE
+    embeddings_model: str = "text-embedding-ada-002"  # EMBEDDINGS_MODEL
     log_level: str = "INFO"  # LOG_LEVEL
-    curl_file: str = "./request.curl"
-    output_folder: str = "./out"
+    openai_api_key: str = ""  # OPENAI_API_KEY
+    openai_model: str = "gpt-4"  # OPENAI_MODEL
+    openai_temperature: float = 0.2  # OPENAI_TEMPERATURE
+    output_folder: str = "./out"  # OUTPUT_FOLDER
+    pinecone_api_key: str = ""  # PINECONE_API_KEY
+    pinecone_environment: str = ""  # PINECONE_ENVIRONMENT
+    pinecone_index_name: str = ""  # PINECONE_INDEX_NAME
+    pinecone_text_field: str = "text"  # PINECONE_TEXT_FIELD
 
 
 @lru_cache
@@ -32,12 +36,15 @@ def get_settings() -> Settings:
     """
     settings = Settings()
     logger.debug("#### SETTINGS ####")
-    logger.debug(f"openai_api_key: {mask_string(settings.openai_api_key)}")
-    logger.debug(f"pinecone_api_key: {mask_string(settings.pinecone_api_key)}")
-    logger.debug(f"pinecone_index_name: {settings.pinecone_index_name}")
-    logger.debug(f"pinecone_environment: {settings.pinecone_environment}")
-    logger.debug(f"log_level: {settings.log_level}")
     logger.debug(f"curl_file: {settings.curl_file}")
+    logger.debug(f"embeddings_model: {settings.embeddings_model}")
+    logger.debug(f"log_level: {settings.log_level}")
+    logger.debug(f"openai_api_key: {mask_string(settings.openai_api_key)}")
+    logger.debug(f"openai_model: {settings.openai_model}")
+    logger.debug(f"openai_temperature: {settings.openai_temperature}")
     logger.debug(f"output_folder: {settings.output_folder}")
+    logger.debug(f"pinecone_api_key: {mask_string(settings.pinecone_api_key)}")
+    logger.debug(f"pinecone_environment: {settings.pinecone_environment}")
+    logger.debug(f"pinecone_index_name: {settings.pinecone_index_name}")
     logger.debug("#### END OF SETTINGS ####")
     return settings

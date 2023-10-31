@@ -2,6 +2,7 @@ import logging
 import os
 from typing import Any, Dict, Optional
 
+import langchain
 from colorama import Fore, Style
 from dotenv import load_dotenv
 
@@ -60,8 +61,21 @@ class SingletonLogger:
         This method initializes the logger.
         """
         load_dotenv()
+        log_level = LEVELS.get(os.environ.get("LOG_LEVEL", "INFO"), logging.INFO)
         self._logger = logging.getLogger("SingletonLogger")
-        self._logger.setLevel(LEVELS.get(os.environ.get("LOG_LEVEL", "INFO"), logging.INFO))
+        self._logger.setLevel(log_level)
+
+        if log_level == logging.DEBUG:
+            logging.basicConfig()
+            langchain.debug = True
+
+            # Set the log level for the default logger
+            logging.getLogger().setLevel(log_level)
+
+            # Set the log level for the requests logger
+            requests_logger = logging.getLogger("http.client")
+            requests_logger.setLevel(log_level)
+
         formatter = ColoredFormatter("%(asctime)s %(levelname)s %(message)s")
 
         # StreamHandler for console logging

@@ -109,17 +109,17 @@ By following these steps, you'll have a `request.curl` file that contains all th
 
 `make scrape`
 
-#### Creating chunks
+#### Loading and splitting
 
-`make chunks`
+`make splits`
 
-#### Create vectors and upload to pinecone
+#### Create embeddings and upload to pinecone
 
-`make vectors`
+`make embeddings`
 
-#### Query the vector db
+#### Retrieve data from the vector db
 
-`make query`
+`make retrieval`
 
 ## References
 

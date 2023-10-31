@@ -24,16 +24,16 @@ lint:
 
 .PHONY: scrape
 scrape:
-	PYTHONPATH=. pipenv run python regent_rag/scraper.py
+	PYTHONPATH=. pipenv run python regent_rag/scrape.py
 
-.PHONY: chunks
-chunks:
-	PYTHONPATH=. pipenv run python regent_rag/chunker.py
+.PHONY: splits
+splits:
+	PYTHONPATH=. pipenv run python regent_rag/splits.py
 
-.PHONY: vectors
-vectors:
-	PYTHONPATH=. pipenv run python regent_rag/vectorizor.py
+.PHONY: embeddings
+embeddings:
+	PYTHONPATH=. pipenv run python regent_rag/embeddings.py
 
-.PHONY: query
-query:
-	PYTHONPATH=. pipenv run python regent_rag/query.py
+.PHONY: retrieval
+retrieval:
+	PYTHONPATH=. pipenv run python regent_rag/retrieval.py

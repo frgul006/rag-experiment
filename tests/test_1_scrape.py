@@ -7,7 +7,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from regent_rag import scraper
+from regent_rag import scrape
 
 URL_ROOT = "https://intern.regent.se/en/intranat-english"
 URL_LINK_HREF = "https://intern.regent.se/en/link1"
@@ -24,20 +24,20 @@ class TestScrapeWebsite:
 
         # Create temporary directory for output
         self.output_dir = tempfile.TemporaryDirectory()
-        self.orig_scrape_folder = scraper.SCRAPE_FOLDER
-        scraper.SCRAPE_FOLDER = self.output_dir.name  # type: ignore
+        self.orig_scrape_folder = scrape.SCRAPE_FOLDER
+        scrape.SCRAPE_FOLDER = self.output_dir.name  # type: ignore
 
         yield  # this is where the testing happens
 
         # Reset SCRAPE_FOLDER to its original value
-        scraper.SCRAPE_FOLDER = self.orig_scrape_folder  # type: ignore
+        scrape.SCRAPE_FOLDER = self.orig_scrape_folder  # type: ignore
 
         # Clean up the temporary directory
         self.output_dir.cleanup()
 
-    @patch.object(scraper, "logger")
-    @patch.object(scraper, "requests")
-    @patch.object(scraper, "BeautifulSoup")
+    @patch.object(scrape, "logger")
+    @patch.object(scrape, "requests")
+    @patch.object(scrape, "BeautifulSoup")
     def test_scrape_website(
         self,
         mock_soup: MagicMock,
@@ -58,7 +58,7 @@ class TestScrapeWebsite:
 
         # Run the function
         with ThreadPoolExecutor(max_workers=1) as executor:
-            scraper.scrape_website(mock_get, self.url, executor=executor)
+            scrape.scrape_website(mock_get, self.url, executor=executor)
 
         # Check that the requests.get function was called with the correct arguments
         expected_calls = [
