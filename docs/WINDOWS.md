@@ -76,6 +76,7 @@ curl https://pyenv.run | bash
 2. Add the following to `~/.bashrc` to initialize pyenv:
 
     ```bash
+    export GPG_TTY=$(tty)
     export PIPENV_VENV_IN_PROJECT=1
     export PYENV_ROOT="$HOME/.pyenv"
     command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
