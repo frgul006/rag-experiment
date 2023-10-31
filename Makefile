@@ -37,3 +37,7 @@ embeddings:
 .PHONY: retrieval
 retrieval:
 	PYTHONPATH=. pipenv run python regent_rag/retrieval.py
+
+.PHONY: flask
+flask:
+	PYTHONPATH=. pipenv run flask run

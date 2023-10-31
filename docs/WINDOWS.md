@@ -135,6 +135,20 @@ Check the versions to make sure everything is set up correctly:
 
 ---
 
+## Install volta
+
+<https://volta.sh/> is a universal JavaScript Tool Manager (replaces nvm for Node version management)
+
+```bash
+curl https://get.volta.sh | bash
+```
+
+## Install node
+
+```bash
+volta install node@18
+```
+
 ## Git Setup
 
 1. Generate GPG Key:

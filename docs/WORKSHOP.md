@@ -20,9 +20,10 @@
   - Cookies
   - Robots
   - Ethics
-- Clean it
-- Chunk it
-- Vectorize it
+  - Clean it
+- Split it
+- Create embeddings
+- Index
 
 ## Terminology to go through
 
@@ -34,6 +35,7 @@
 ## Considerations
 
 - Data Laws (Pinecone in US)
+- Localization (the intranet is in Swedish and English, how to make it bilingual?)
 
 ## Prerequisites
 

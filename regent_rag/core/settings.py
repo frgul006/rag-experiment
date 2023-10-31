@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     It defines the configuration settings for the application.
     """
 
-    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", frozen=True)
+    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", frozen=True, extra="ignore")
 
     curl_file: str = "./request.curl"  # CURL_FILE
     embeddings_model: str = "text-embedding-ada-002"  # EMBEDDINGS_MODEL
@@ -25,6 +25,7 @@ class Settings(BaseSettings):
     pinecone_environment: str = ""  # PINECONE_ENVIRONMENT
     pinecone_index_name: str = ""  # PINECONE_INDEX_NAME
     pinecone_text_field: str = "text"  # PINECONE_TEXT_FIELD
+    flask_app: str = "./regent_rag/app.py"  # FLASK_APP
 
 
 @lru_cache
@@ -46,5 +47,6 @@ def get_settings() -> Settings:
     logger.debug(f"pinecone_api_key: {mask_string(settings.pinecone_api_key)}")
     logger.debug(f"pinecone_environment: {settings.pinecone_environment}")
     logger.debug(f"pinecone_index_name: {settings.pinecone_index_name}")
+    logger.debug(f"flask_app: {settings.flask_app}")
     logger.debug("#### END OF SETTINGS ####")
     return settings

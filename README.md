@@ -58,6 +58,20 @@ Install all packages (including dev dependencies) using the following command:
 make install-dev
 ```
 
+### Install volta
+
+<https://volta.sh/> is a universal JavaScript Tool Manager (replaces nvm for Node version management)
+
+```bash
+curl https://get.volta.sh | bash
+```
+
+### Install node
+
+```bash
+volta install node@18
+```
+
 ## Usage
 
 ### Environment Setup
@@ -124,3 +138,7 @@ By following these steps, you'll have a `request.curl` file that contains all th
 ## References
 
 <https://github.com/Sstobo/Site-Sn33k>
+
+### Spinning up the backend
+
+`make flask`
