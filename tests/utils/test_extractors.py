@@ -4,7 +4,7 @@ from io import BytesIO
 from pptx import Presentation
 from reportlab.pdfgen import canvas
 
-from regent_rag.utils.extractors import extract_text_from_pdf, extract_text_from_pptx
+from regent_rag.core.extractors import extract_text_from_pdf, extract_text_from_pptx
 
 
 class TestExtractText(unittest.TestCase):

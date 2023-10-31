@@ -2,7 +2,7 @@ import os
 import tempfile
 import unittest
 
-from regent_rag.utils.path import ensure_dir
+from regent_rag.core.path import ensure_dir
 
 
 class TestEnsureDir(unittest.TestCase):

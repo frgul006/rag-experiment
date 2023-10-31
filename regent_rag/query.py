@@ -4,8 +4,8 @@ from langchain.chat_models import ChatOpenAI
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import Pinecone
 
-from regent_rag.utils.logging import logger
-from regent_rag.utils.settings import get_settings
+from regent_rag.core.logging import logger
+from regent_rag.core.settings import get_settings
 
 
 def main() -> None:

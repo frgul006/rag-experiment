@@ -3,8 +3,8 @@ import openai
 import pinecone
 from tqdm.auto import tqdm
 
-from regent_rag.utils.logging import logger
-from regent_rag.utils.settings import get_settings
+from regent_rag.core.logging import logger
+from regent_rag.core.settings import get_settings
 
 
 def load_data(file_path: str) -> list[dict[str, str]]:

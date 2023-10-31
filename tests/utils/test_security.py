@@ -1,6 +1,6 @@
 import unittest
 
-from regent_rag.utils.security import mask_string
+from regent_rag.core.security import mask_string
 
 
 class TestMaskString(unittest.TestCase):

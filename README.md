@@ -1,5 +1,7 @@
 # Regent Rag
 
+[![CI](https://github.com/frgul006/rag-experiment/actions/workflows/ci.yml/badge.svg)](https://github.com/frgul006/rag-experiment/actions/workflows/ci.yml)
+
 Regent Rag is a collection of Python scripts designed to scrape websites behind cookie-based authentication, transform the textual content into a vector database, and execute queries against this database.
 
 This README provides instructions on how to install, setup and run the scripts locally.
@@ -20,6 +22,12 @@ Install pipenv using the following command:
 
 ```bash
 pip install --user pipenv
+```
+
+Tell pipenv to install virtual environments in project
+
+```bash
+export PIPENV_VENV_IN_PROJECT=1
 ```
 
 You can verify your installation by running:

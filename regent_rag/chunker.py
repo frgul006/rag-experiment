@@ -8,8 +8,8 @@ import tiktoken
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from tqdm.auto import tqdm
 
-from regent_rag.utils.logging import logger
-from regent_rag.utils.settings import get_settings
+from regent_rag.core.logging import logger
+from regent_rag.core.settings import get_settings
 
 tokenizer = tiktoken.get_encoding("cl100k_base")
 

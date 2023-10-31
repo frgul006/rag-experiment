@@ -2,8 +2,8 @@ from functools import lru_cache
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-from regent_rag.utils.logging import logger
-from regent_rag.utils.security import mask_string
+from regent_rag.core.logging import logger
+from regent_rag.core.security import mask_string
 
 
 class Settings(BaseSettings):

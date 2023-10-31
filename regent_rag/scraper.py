@@ -9,11 +9,11 @@ from urllib.parse import urlparse
 import requests
 from bs4 import BeautifulSoup
 
-from regent_rag.utils.cookies import get_cookies_and_user_agent_from_file
-from regent_rag.utils.extractors import extract_text_from_pdf, extract_text_from_pptx
-from regent_rag.utils.logging import logger
-from regent_rag.utils.path import ensure_dir
-from regent_rag.utils.settings import get_settings
+from regent_rag.core.cookies import get_cookies_and_user_agent_from_file
+from regent_rag.core.extractors import extract_text_from_pdf, extract_text_from_pptx
+from regent_rag.core.logging import logger
+from regent_rag.core.path import ensure_dir
+from regent_rag.core.settings import get_settings
 
 CURL_FILE = get_settings().curl_file
 SCRAPE_FOLDER = f"{get_settings().output_folder}/scrape"
