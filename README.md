@@ -8,7 +8,7 @@ This README provides instructions on how to install, setup and run the scripts l
 
 ### For Windows Users
 
-Installation on Windows might require a custom setup or WSDL. More details will be provided soon.
+Installation on Windows can be found under [docs/WINDOWS.md](./docs/WINDOWS.md). Note that the instructions require Windows 10 OS Build 2004 or later.
 
 ### Python
 
