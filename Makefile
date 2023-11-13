@@ -38,6 +38,10 @@ embeddings:
 retrieval:
 	PYTHONPATH=. pipenv run python regent_rag/retrieval.py
 
+.PHONY: evaluation
+evaluation:
+	PYTHONPATH=. pipenv run python regent_rag/evaluation.py
+
 .PHONY: flask
 flask:
 	PYTHONPATH=. pipenv run flask run
