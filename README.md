@@ -119,7 +119,7 @@ For example, if on Windows and using Firefox, I'd recommend choosing Copy Value 
 1. Right-click on the request and select Copy -> Copy as cURL.
 1. Paste the copied request into a new file and save it as `request.curl`.
 
-![screenshot when copying a request as cURL in Google Chrome](docs/image.png)
+![screenshot when copying a request as cURL in Google Chrome](docs/images/copy_as_curl.png)
 
 By following these steps, you'll have a `request.curl` file that contains all the necessary cookies for the scraper to work with authentication.
 
