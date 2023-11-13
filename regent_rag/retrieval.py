@@ -56,21 +56,23 @@ def get_vectordb(settings: Settings, embeddings: OpenAIEmbeddings) -> Pinecone:
     return vectordb
 
 
+def get_chain(llm: Any, retriever: MultiQueryRetriever) -> Any:
+    logger.info("Setting up chain...")
+    chain = RetrievalQAWithSourcesChain.from_chain_type(llm=llm, chain_type="stuff", retriever=retriever)
+    return chain
+
+
 def retrieve_answer(query: str) -> Dict[str, Any]:
     settings = get_settings()
     llm = get_llm(settings)
     multi_query_retriever = get_retriever(settings, llm)
-
+    chain = get_chain(llm, multi_query_retriever)
     # You can get the unique docs that are retrieved in query
     # unique_docs = multi_query_retriever.get_relevant_documents(query)
     # logger.info(unique_docs)
 
     logger.info("Making query...")
-    qa_with_sources_multiquery = RetrievalQAWithSourcesChain.from_chain_type(
-        llm=llm, chain_type="stuff", retriever=multi_query_retriever
-    )
-
-    return qa_with_sources_multiquery(query)
+    return chain(query)
 
 
 def main() -> None:

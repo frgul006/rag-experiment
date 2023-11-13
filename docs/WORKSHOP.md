@@ -3,6 +3,16 @@
 ## TO DOs
 
 - Evaluation
+
+  - MDD (Metrics-Driven Development)
+
+    - Using Ragas, we can evaluate and monitor essential metrics over time such as
+
+      - **Faithfulness**: This feature assists in identifying and quantifying instances of hallucinations.
+      - **Bad retrieval**: This feature helps identify and quantify poor context retrievals.
+      - **Bad response**: This feature helps in recognizing and quantifying evasive, harmful, or toxic responses.
+      - **Bad format**: This feature helps in detecting and quantifying responses with incorrect formatting.
+
 - Frontend
 - Conversation
 - Agent with actions

@@ -14,7 +14,7 @@ Installation on Windows can be found under [docs/WINDOWS.md](./docs/WINDOWS.md).
 
 ### Python
 
-Install Python 3.12. You can download it from the [official Python website](https://www.python.org/downloads/) or if you're on MacOS using [pyenv](https://github.com/pyenv/pyenv#getting-pyenv).
+Install Python 3.11.6. You can download it from the [official Python website](https://www.python.org/downloads/) or if you're on MacOS using [pyenv](https://github.com/pyenv/pyenv#getting-pyenv).
 
 ### Pipenv
 
@@ -38,7 +38,7 @@ pipenv --version
 
 ### Rust compiler
 
-Ensure you have a rust compiler installed. It's required for `tiktoken` when running Python 3.12. You can install it (on MacOS) using the following command:
+Ensure you have a rust compiler installed. It's required for `volta`. You can install it (on MacOS) using the following command:
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -102,6 +102,12 @@ LOG_LEVEL="INFO"
 
 You need to copy a request from the network tab of your browser in order to be able to scrape a webpage that requires authentication.
 
+##### IMPORTANT
+
+These instructions may differ from browser to browser and OS to OS. It is _very_ important that the output you paste into `request.curl` follows the exact format specified in `request.curl.sample`.
+
+For example, if on Windows and using Firefox, I'd recommend choosing Copy Value -> Copy Request Headers and then manually fixing the lines to match the format in the sample file.
+
 ##### Steps
 
 1. Open the webpage you want to scrape in Google Chrome.
@@ -135,10 +141,10 @@ By following these steps, you'll have a `request.curl` file that contains all th
 
 `make retrieval`
 
+### Running the backend application
+
+`make flask`
+
 ## References
 
 <https://github.com/Sstobo/Site-Sn33k>
-
-### Spinning up the backend
-
-`make flask`

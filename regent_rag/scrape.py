@@ -1,5 +1,6 @@
 import json
 import os
+import re
 import sys
 import urllib.parse
 from concurrent.futures import ThreadPoolExecutor
@@ -45,8 +46,13 @@ def scrape_website(
         text_content = extract_text_from_pptx(response.content)
         is_file = True
     else:
+        raw_soup = BeautifulSoup(response.text, "html.parser")
         soup = BeautifulSoup(response.text, "html.parser")
-        text_content = str(soup)
+        # Remove script and style elements
+        for script_or_style in soup(["script", "style", "link", "header", "footer"]):
+            script_or_style.decompose()
+
+        text_content = re.sub(r"[\n\t]", "", str(soup))
 
     # Save the URL and the downloaded content into a JSON object
     data = {"url": url, "content": text_content}
@@ -63,7 +69,14 @@ def scrape_website(
         return
 
     # Find all links on the webpage
-    links = list({a["href"] for a in soup.find_all("a") if a.has_attr("href")})
+    links = list({a["href"] for a in raw_soup.find_all("a") if a.has_attr("href")})
+
+    # If scraping root page and login link was found, log critical error and exit
+    if url == "https://intern.regent.se/en/intranat-english" and any(
+        "https://intern.regent.se/wp-login.php" in link for link in links
+    ):
+        logger.critical("Login link found on root page. You are not authenticated properly!")
+        sys.exit(1)
 
     for href in links:
         # Make sure the URL is not None

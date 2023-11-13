@@ -20,8 +20,8 @@ def tiktoken_len(text: str) -> int:
 
 
 text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=400,
-    chunk_overlap=20,
+    chunk_size=600,
+    chunk_overlap=100,
     length_function=tiktoken_len,
     separators=["\n\n", "\n", " ", ""],
 )

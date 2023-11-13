@@ -18,7 +18,7 @@ class Settings(BaseSettings):
     embeddings_model: str = "text-embedding-ada-002"  # EMBEDDINGS_MODEL
     log_level: str = "INFO"  # LOG_LEVEL
     openai_api_key: str = ""  # OPENAI_API_KEY
-    openai_model: str = "gpt-4"  # OPENAI_MODEL
+    openai_model: str = "gpt-3.5-turbo"  # OPENAI_MODEL
     openai_temperature: float = 0.2  # OPENAI_TEMPERATURE
     output_folder: str = "./out"  # OUTPUT_FOLDER
     pinecone_api_key: str = ""  # PINECONE_API_KEY

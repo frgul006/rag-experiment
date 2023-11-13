@@ -27,10 +27,10 @@ jobs:
           # An explicit key for restoring and saving the cache
           key: build_cache
 
-      - name: Set up Python 3.12
+      - name: Set up Python 3.11.6
         uses: actions/setup-python@v3
         with:
-          python-version: "3.12"
+          python-version: "3.11.6"
 
       - name: Setup pipenv
         run: |
