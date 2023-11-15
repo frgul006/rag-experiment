@@ -24,10 +24,35 @@ Install pipenv using the following command:
 pip install --user pipenv
 ```
 
-Tell pipenv to install virtual environments in project
+Now ensure `pipenv` is available on `PATH` by running:
 
 ```bash
-export PIPENV_VENV_IN_PROJECT=1
+pipenv --version
+```
+
+If it's not available you likely need to add `~/.local/bin` to your `PATH`:
+
+```bash
+export PATH="$HOME/.local/bin:$PATH"
+```
+
+and to persist it, add it to your profile of choice (`~/.profile`, `~/.bash_profile` or `~/.zshrc`)
+
+```bash
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+```
+
+Tell pipenv to install virtual environments in project and ensure the LANG environment variable is set:
+
+```bash
+export PIPENV_VENV_IN_PROJECT=1 && export LANG="en_US.UTF-8"
+
+```
+
+or to persist:
+
+```bash
+echo 'export PIPENV_VENV_IN_PROJECT=1\nexport LANG="en_US.UTF-8"' >> ~/.zshrc
 ```
 
 You can verify your installation by running:
@@ -50,14 +75,6 @@ You can verify your installation by running:
 cargo --version
 ```
 
-### Install packages
-
-Install all packages (including dev dependencies) using the following command:
-
-```bash
-make install-dev
-```
-
 ### Install volta
 
 <https://volta.sh/> is a universal JavaScript Tool Manager (replaces nvm for Node version management)
@@ -70,6 +87,28 @@ curl https://get.volta.sh | bash
 
 ```bash
 volta install node@18
+```
+
+### Install packages
+
+Install all packages (including dev dependencies) using the following command:
+
+```bash
+make install-dev
+```
+
+### Verify installation
+
+If you are able to run the following set of commands, you should be all set!
+
+```bash
+python --version &&
+pipenv --version &&
+cargo --version &&
+node --version &&
+volta --version &&
+echo $PIPENV_VENV_IN_PROJECT &&
+echo $LANG
 ```
 
 ## Usage

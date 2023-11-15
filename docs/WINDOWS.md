@@ -169,7 +169,11 @@ volta install node@18
    gpg --armor --export SOME_SIGNING_KEY
    ```
 
-4. Git Configuration:
+4. Add signing key to github.com
+
+https://github.com/settings/gpg/new
+
+5. Git Configuration:
 
    ```bash
    git config --global user.signingkey SOME_SIGNING_KEY
@@ -178,7 +182,7 @@ volta install node@18
    git config --global user.email "john@doe.com"
    ```
 
-5. Clone repo and set up development:
+6. Clone repo and set up development:
 
    ```bash
    git clone https://github.com/frgul006/rag-experiment.git
