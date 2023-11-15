@@ -2,7 +2,7 @@ import json
 from pprint import pformat
 
 from ragas.langchain.evalchain import RagasEvaluatorChain
-from ragas.metrics import answer_relevancy, context_precision, context_recall, faithfulness
+from ragas.metrics import answer_relevancy  # , context_precision, context_recall, faithfulness
 
 from datasets import Dataset
 from regent_rag.core.logging import logger

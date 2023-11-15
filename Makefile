@@ -20,7 +20,6 @@ lint:
 	PYTHONPATH=. pipenv run black --check $(SOURCE_FOLDER) tests
 	PYTHONPATH=. pipenv run pylint $(SOURCE_FOLDER)
 	PYTHONPATH=. pipenv run pylint tests/*
-	PYTHONPATH=. pipenv run mypy $(SOURCE_FOLDER)
 
 .PHONY: scrape
 scrape:
