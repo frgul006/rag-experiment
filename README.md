@@ -36,12 +36,9 @@ export PYENV_ROOT=$HOME/.pyenv
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-# reload shell
-
+# reload shell (~/.profile, ~/.bash_profile or ~/.zshrc), e.g. .zshrc
 source ~/.zshrc
-
 # ensure it's there
-
 cat ~/.zshrc
 ```
 
