@@ -16,12 +16,46 @@ Installation on Windows can be found under [docs/WINDOWS.md](./docs/WINDOWS.md).
 
 Install Python 3.11.6. You can download it from the [official Python website](https://www.python.org/downloads/) or if you're on MacOS using [pyenv](https://github.com/pyenv/pyenv#getting-pyenv).
 
+```bash
+brew install pyenv
+pyenv install 3.11.6
+```
+
+Point out your pyenv path in `~/.zshrc`
+
+````bash
+# In terminal
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+
+# or in shell file add:
+
+# python env
+export PYENV_ROOT=$HOME/.pyenv
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+```bash
+# reload shell
+
+source ~/.zshrc
+
+# ensure it's there
+
+cat ~/.zshrc
+````
+
 ### Pipenv
 
 Install pipenv using the following command:
 
 ```bash
 pip install --user pipenv
+
+# or with brew
+
+brew install pip
 ```
 
 Now ensure `pipenv` is available on `PATH` by running:
@@ -67,6 +101,12 @@ Ensure you have a rust compiler installed. It's required for `volta`. You can in
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+or with Brew
+
+```bash
+brew install rust
 ```
 
 You can verify your installation by running:
