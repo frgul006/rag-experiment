@@ -23,7 +23,7 @@ pyenv install 3.11.6
 
 Point out your pyenv path in `~/.zshrc`
 
-````bash
+```bash
 # In terminal
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
 echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
@@ -36,7 +36,6 @@ export PYENV_ROOT=$HOME/.pyenv
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-```bash
 # reload shell
 
 source ~/.zshrc
@@ -44,7 +43,7 @@ source ~/.zshrc
 # ensure it's there
 
 cat ~/.zshrc
-````
+```
 
 ### Pipenv
 
@@ -55,7 +54,7 @@ pip install --user pipenv
 
 # or with brew
 
-brew install pip
+brew install pipenv
 ```
 
 Now ensure `pipenv` is available on `PATH` by running:
