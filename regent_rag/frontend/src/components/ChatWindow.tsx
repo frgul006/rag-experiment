@@ -49,8 +49,10 @@ const ChatWindow = () => {
       // Assume the bot's response is in a field called 'response' in the returned JSON
       const botResponse = response.data.answer;
 
-      // Turn comma separated sources into an array and remove whitespace
-      const sourcesArray = response.data.sources.split(",").map((source:string) => source.trim())
+      console.log(response.data.sources)
+
+      // Assuming sources is a comma separated string, split it into an array
+      const sourcesArray = response.data.sources ? response.data.sources.split(',') : [response.data.sources]
 
       // Add the bot's message to the chat history
       const botMessage: ChatMessage = {

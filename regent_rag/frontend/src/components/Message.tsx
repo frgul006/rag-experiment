@@ -39,7 +39,10 @@ const Message: React.FC<MessageProps> = ({ sender, content, sources }) => {
             {sender === "bot" && !!sources?.length && (
               <SourcesList>{
                 sources.map((source, i) => (
-                  <SourceItem key={i} source={source} />
+                  <>
+                <SourceItem key={i} source={source} />
+                {i < sources.length - 1 && <span style={{paddingInlineEnd: '.5ch'}}>,</span>}
+                  </>
                 ))
               }</SourcesList>
             )}
