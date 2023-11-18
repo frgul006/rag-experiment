@@ -28,6 +28,8 @@ export const MessageContent = styled.div<{ isBot: boolean }>`
 `;
 
 export const SourcesList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
   margin-top: 10px;
   list-style-type: none;
   padding: 0;

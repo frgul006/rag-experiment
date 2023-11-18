@@ -9,7 +9,7 @@ import SourceItem from "./SourceItem";
 interface MessageProps {
   sender: "user" | "bot";
   content: string;
-  sources?: string | string[];
+  sources?: string[];
 }
 
 const Message: React.FC<MessageProps> = ({ sender, content, sources }) => {
@@ -22,15 +22,7 @@ const Message: React.FC<MessageProps> = ({ sender, content, sources }) => {
   const Icon = isBot ? FaRobot : FaUser;
   const iconSize = isBot ? 36 : 24;
 
-  const renderSources = (sources: string | string[]) => {
-    if (typeof sources === "string") {
-      return <SourceItem source={sources} />;
-    }
 
-    return sources.map((source, idx) => (
-      <SourceItem key={idx} source={source} />
-    ));
-  };
 
   return (
     <animated.div style={fade}>
@@ -45,7 +37,11 @@ const Message: React.FC<MessageProps> = ({ sender, content, sources }) => {
               }}
             />
             {sender === "bot" && sources && (
-              <SourcesList>{renderSources(sources)}</SourcesList>
+              <SourcesList>{
+                sources.map((source, i) => (
+                  <SourceItem key={i} source={source} />
+                ))
+              }</SourcesList>
             )}
           </div>
         </MessageContent>
