@@ -41,7 +41,7 @@ const Message: React.FC<MessageProps> = ({ sender, content, sources }) => {
                 sources.map((source, i) => (
                   <>
                 <SourceItem key={i} source={source} />
-                {i < sources.length - 1 && <span style={{paddingInlineEnd: '.5ch'}}>,</span>}
+                {i < sources.length -1 && <span style={{paddingInlineEnd: '.5ch'}}>,</span>}
                   </>
                 ))
               }</SourcesList>
