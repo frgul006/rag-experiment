@@ -36,7 +36,7 @@ const Message: React.FC<MessageProps> = ({ sender, content, sources }) => {
                 a: ({ node, ...props }) => <MarkdownLink {...props} />,
               }}
             />
-            {sender === "bot" && sources && (
+            {sender === "bot" && !!sources?.length && (
               <SourcesList>{
                 sources.map((source, i) => (
                   <SourceItem key={i} source={source} />
