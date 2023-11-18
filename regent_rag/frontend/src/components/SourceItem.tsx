@@ -6,6 +6,7 @@ interface SourceItemProps {
 }
 
 export const SourceItemLi = styled.li`
+  display: inline;
   padding: 3px 0;
 `;
 

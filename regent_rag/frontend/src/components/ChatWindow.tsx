@@ -13,7 +13,7 @@ import { ClipLoader } from "react-spinners";
 interface ChatMessage {
   sender: "user" | "bot";
   content: string;
-  sources?: string | string[];
+  sources?: string[];
 }
 
 const ChatWindow = () => {
@@ -26,7 +26,7 @@ const ChatWindow = () => {
       content:
         "You can calculate the total cost for you as an employee using this Excel document: [ALD Personalbil.xlsx](http://wikiregent.wpengine.com/wp-content/uploads/2018/04/ALD-Personalbil.xlsx)\n",
       sender: "bot",
-      sources: "https://intern.regent.se/en/staff-car/",
+      sources: ["https://intern.regent.se/en/staff-car/"],
     },
   ]);
   const [userInput, setUserInput] = useState("");
@@ -49,11 +49,16 @@ const ChatWindow = () => {
       // Assume the bot's response is in a field called 'response' in the returned JSON
       const botResponse = response.data.answer;
 
+      console.log(response.data.sources)
+
+      // Assuming sources is a comma separated string, split it into an array
+      const sourcesArray = response.data.sources ? response.data.sources.split(',') : [response.data.sources]
+
       // Add the bot's message to the chat history
       const botMessage: ChatMessage = {
         sender: "bot",
         content: botResponse,
-        sources: response.data.sources,
+        sources: sourcesArray,
       };
       setChatHistory([...chatHistory, userMessage, botMessage]);
     } catch (error) {
